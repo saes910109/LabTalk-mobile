@@ -14,15 +14,17 @@ export default class DrawerSideBar extends React.Component {
       const {navigate} = this.props;
       return (
         <Container style={styles.drawer}>
+            <Image source={require('../images/labtalk.png')} style={styles.header}>
+            </Image>  
             <Button block transparent style={styles.item} onPress={() => navigate('Group')}>
-                <Icon name='rocket' style={styles.icon} />
-                <Text style={styles.text}>群組</Text>
+                <Icon name='chatbubble' style={styles.icon} />
+                <Text style={styles.text}>群組列表</Text>
                 <Badge primary style={styles.badge}>
                     <NbText style={styles.badgeText}>2</NbText>
                 </Badge>
             </Button>
             <Button block transparent style={styles.item} onPress={() => navigate('Profile')}>
-                <Icon name='tag-multiple' style={styles.icon} />
+                <Icon name='person' style={styles.icon} />
                 <Text style={styles.text}>個人資料</Text>
             </Button>
             <Button block transparent style={styles.item}>

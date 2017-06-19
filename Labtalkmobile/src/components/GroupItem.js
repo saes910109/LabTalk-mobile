@@ -4,14 +4,14 @@ import {
     Text,
     View,
     ListView,
+    TouchableHighlight,
+    Button
 } from 'react-native';
-import InfiniteScrollView from 'react-native-infinite-scroll-view';
 
 import {Content} from 'native-base';
-import NavigationContainer from './NavigationContainer';
 
 import {connect} from 'react-redux';
-
+import {changeChatroom} from '../states/group-actions.js';
 class GroupItem extends React.Component {
       static propTypes = {
           id: PropTypes.string,
@@ -25,19 +25,28 @@ class GroupItem extends React.Component {
 
     constructor(props) {
         super(props);
+        this.handleGroupClick = this.handleGroupClick.bind(this);
+    }
+    render() {
+        return (
+            <Text style={{textAlign: 'center',alignSelf: 'stretch', fontSize:20}}>{this.props.name}</Text>
+        );
     }
 
-    render() {
-        const {navigate} = this.props.navigation;
-        return (
-
-            <Text style={{textAlign: 'center'}}>{this.props.name}</Text>
-
-        );
+    handleGroupClick(){
+        let obj={
+          id: this.props.id,
+          name: this.props.name,
+          usernames: this.props.usernames
+        };
+        this.props.dispatch(changeChatroom(obj, ''));
     }
 }
 
 export default connect(state => ({
   ...state.chatlist,
-  ...state.logIn
+  ...state.groupitem,
+  ...state.grouplist,
+  ...state.chatroom,
+  ...state.chatlist
 }))(GroupItem);

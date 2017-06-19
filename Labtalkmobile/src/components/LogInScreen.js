@@ -20,6 +20,7 @@ import{
   changeAccountEmail,
   submitAccount
 } from '../states/newAccount-action.js';
+import {resetItem} from '../states/logIn-action.js';
 
 
 class LogInScreen extends React.Component {
@@ -45,15 +46,15 @@ class LogInScreen extends React.Component {
     componentWillReceiveProps(nextProps){
       if(nextProps.login_success){
           const {navigate} = this.props.navigation;
-          navigate('Group');
+          navigate('Profile');
       }
     }
 
     render() {
         return (
-          <View style={{flex:1}}>
-                <View style={{flex: 1, backgroundColor: 'black'}}></View>
-                <View style={{flex: 3, backgroundColor: 'black'}}>
+          <View style={{flex:1, backgroundColor: 'black'}}>
+                <View style={{flex: 1}}></View>
+                <View style={{flex: 3}}>
                     <Text style={{textAlign: 'center' ,fontWeight: 'bold', fontSize: 50, color: 'white' }}>
                       LABTALK
                     </Text>

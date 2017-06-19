@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import InfiniteScrollView from 'react-native-infinite-scroll-view';
 
-import {Content} from 'native-base';
+import {Content, List, ListItem} from 'native-base';
 import NavigationContainer from './NavigationContainer';
 import {listGroups} from '../states/group-actions.js';
 import GroupItem from './GroupItem.js';
@@ -26,26 +26,37 @@ class GroupScreen extends React.Component {
         super(props);
 
     }
-
-  /*  componentDidMount() {
+    componentWillReceiveProps(nextProps){
+      if(nextProps.chats!==this.props.chats)
+      if(nextProps.chats){
+        const {navigate} = this.props.navigation;
+        navigate('Chat');
+      }
+    }
+    componentDidMount() {
         this.props.dispatch(listGroups('',this.props.username_login));
     }
-*/
+
     render() {
         const {navigate} = this.props.navigation;
         const {dispatch, addgroup_modal_Toggle, groups, groupLoading} = this.props;
-        var items = <Text>''</Text>;
-        if(groups.length > 0){
-          items = groups.map(p=>(
-            <ListItem key={p.id}><GroupItem {...p} /></ListItem>
-          ));
-        }
+        var items = [];
+        if(groups.length > 0)
+          items = groups;
         return (
             <NavigationContainer navigate={navigate} title='群組列表'>
-
+              <List dataArray={items}
+                        renderRow={(item) =>
+                            <ListItem leftIcon={{ name: 'left-right', type: 'font-awesome'}}>
+                                <GroupItem{...item}/>
+                            </ListItem>
+                        }>
+              </List>
             </NavigationContainer>
         );
     }
+
+
 }
 
 export default connect(state => ({

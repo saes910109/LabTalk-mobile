@@ -48,7 +48,7 @@ export function submitAccount(newname,newpassword,email){
   return (dispatch, getState) =>{
     dispatch(startGoLoading());
     // check the name is use or not
-   return  logInSubmit(newname).then((len) => {
+   return logInSubmit(newname).then((len) => {
       if(len){
         console.log("The name has been use");
         ToastAndroid.show('此帳戶名稱已被使用', ToastAndroid.SHORT);

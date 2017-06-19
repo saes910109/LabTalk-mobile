@@ -4,6 +4,7 @@ import {
     Text,
     View,
     ListView,
+    Image
 } from 'react-native';
 import InfiniteScrollView from 'react-native-infinite-scroll-view';
 
@@ -26,7 +27,8 @@ class ProfileScreen extends React.Component {
         return (
             <NavigationContainer navigate={navigate} title='個人資料'>
                 <View style={{flex: 1, justifyContent: 'center'}}>
-                    <Text style={{textAlign: 'center'}}>{this.props.username_login}</Text>
+                    <View style={{flex: 1}}><Image style={{width:100, height:100, overflow: 'visible'}} source={require('../images/labtalk.png')}/></View>
+                    <Text style={{flex: 1, textAlign: 'center', fontSize: 30}}>{this.props.username_login}</Text>
                 </View>
             </NavigationContainer>
         );
