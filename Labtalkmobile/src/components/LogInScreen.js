@@ -66,8 +66,8 @@ class LogInScreen extends React.Component {
                        </Item>
                    </Form>
                       <Text> </Text>
-                     <Button  block warning onPress={this.goToLog}>
-                       <Text style={{color: 'white'}}>登入</Text>
+                     <Button block warning onPress={this.goToLog}>
+                       <Text style={{ color: 'white'}}>登入</Text>
                      </Button>
                        <Text> </Text>
                      <TouchableHighlight onPress={this.toggle}>
@@ -75,7 +75,31 @@ class LogInScreen extends React.Component {
                      </TouchableHighlight>
                 </View>
                 <View style={{marginTop: 22, backgroundColor: 'black'}} >
-
+        <Modal
+          animationType={"slide"}
+          transparent={false}
+          visible={this.props.modal}
+          onRequestClose={this.toggle}
+          >
+         <View style={{marginTop: 22}}>
+        <Form >
+          <Item underline>
+              <Input value ={this.props.newname} onChangeText={this.NameChange} placeholder='註冊用戶名稱'/>
+          </Item>
+          <Item underline>
+             <Input value ={this.props.newpassword} onChangeText={this.PasswordChange} placeholder='請設定密碼'/>
+           </Item>
+           <Item underline>
+               <Input value ={this.props.email} onChangeText={this.EmailChange} placeholder='請輸入信箱'/>
+            </Item>
+        </Form>
+        <Button block danger onPress={this.buildAccount}>
+          <Text> </Text>
+          <Text> </Text>
+          <Text style={{fontSize: 24, color: 'white'}}>註冊</Text>
+        </Button>
+         </View>
+        </Modal>
       </View>
       </View>
         );

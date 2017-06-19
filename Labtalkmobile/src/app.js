@@ -23,10 +23,8 @@ import ChatScreen from './components/ChatScreen';
 import ProfileScreen from './components/ProfileScreen';
 import GroupScreen from './components/GroupScreen';
 import LogInScreen from './components/LogInScreen';
-import MainPageScreen from './components/MainPageScreen';
 
 const AppNavigator = StackNavigator({
-    Main: {screen: MainPageScreen},
     Calendar: {screen: CalendarScreen},
     Chat: {screen: ChatScreen},
     Profile: {screen: ProfileScreen},
